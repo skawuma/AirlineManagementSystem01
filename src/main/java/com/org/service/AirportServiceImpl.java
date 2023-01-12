@@ -1,15 +1,21 @@
 package com.org.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.org.entity.Airport;
-
+import com.org.repo.AirportRepo;
+@Service
 public class AirportServiceImpl implements AirportService {
-
+    @Autowired
+    AirportRepo airportRepo;
+	
+	
 	@Override
 	public Iterable<Airport> viewAllAirport() {
 		// TODO Auto-generated method stub
-		return null;
+		return airportRepo.findAll();
 	}
 
 	@Override
