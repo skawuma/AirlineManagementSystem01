@@ -3,9 +3,10 @@ package com.org.entity;
 import java.math.BigInteger;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 @Entity
 public class Passenger {
-	
+	@Id
 	private long  psnNumber;
 	private String psnName;
 	private int psnAge;
