@@ -4,7 +4,9 @@ import java.math.BigInteger;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 @Entity
+@Table(name= "Passenger_tbr")
 public class Passenger {
 	@Id
 	private long  psnNumber;

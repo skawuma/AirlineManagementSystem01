@@ -4,8 +4,10 @@ import java.math.BigInteger;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name= "Users_tbr")
 public class Users {
 	
 	private String userType;

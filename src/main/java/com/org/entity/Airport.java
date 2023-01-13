@@ -4,10 +4,14 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name= "Airport_tbr")
 public class Airport {
 	@Id
+	@Size(min = 3, max = 15)
 	private String airportCode;
 	private String  airportLocation;
 	private String  airportName;

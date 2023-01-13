@@ -3,8 +3,10 @@ package com.org.entity;
 import java.math.BigInteger;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name= "Flight_tbr")
 public class Flight {
 
 	@Id
