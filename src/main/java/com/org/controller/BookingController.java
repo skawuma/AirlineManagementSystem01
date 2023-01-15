@@ -24,7 +24,7 @@ import com.org.service.BookingService;
 @CrossOrigin
 @ComponentScan(basePackages ="com")
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/api/booking")
 public class BookingController {
 	@Autowired(required =true)
 	BookingService bookingService;
@@ -37,7 +37,7 @@ public class BookingController {
 			
 	}
 	
-	@GetMapping("/readalllBooking")
+	@GetMapping("/viewalllBooking")
 	public Iterable<Booking> readAllBookings(){
 	return bookingService.displayAllBooking();
 
@@ -50,7 +50,7 @@ public class BookingController {
 	 bookingService.updateBooking(updateBooking);
 	 
  }
- @GetMapping("/serchBooking/{id}")
+ @GetMapping("/searchBooking/{id}")
  @ExceptionHandler(RecordNotFoundException.class)
  public ResponseEntity<?> searchBookingByID(@PathVariable("id") BigInteger bookingId){
 	 return bookingService.findBookingId(bookingId);

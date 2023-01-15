@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -17,6 +18,7 @@ import jakarta.validation.constraints.NotNull;
 public class ScheduledFlight {
 	
     @Id
+    @Size(min = 3, max = 15)
     @Column(name = "schedule_flight_id")
 	private BigInteger scheduleFlightId;
 	

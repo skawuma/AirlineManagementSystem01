@@ -12,6 +12,8 @@ public interface FlightService {
 	
 	public Iterable <Flight>viewAllFlight();
 	
+	public Flight viewFlight(BigInteger flightNumber);
+	
 	public Flight modifyFlight(Flight flight);
 	
 	public String removeFlight(BigInteger flightNumber);

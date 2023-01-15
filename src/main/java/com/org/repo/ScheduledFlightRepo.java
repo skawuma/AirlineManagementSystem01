@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.org.entity.ScheduledFlight;
 
 @Repository
-public interface SheduledFlightRepo extends JpaRepository<ScheduledFlight, BigInteger> {
+public interface ScheduledFlightRepo extends JpaRepository<ScheduledFlight, BigInteger> {
 
 }

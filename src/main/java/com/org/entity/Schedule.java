@@ -9,11 +9,13 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name= "schedule_tbr")
 public class Schedule {
 	@Id
+	@Size(min = 3, max = 15)
 	@Column(name = "schedule_Id")
 	private BigInteger  scheduleId;
 	
