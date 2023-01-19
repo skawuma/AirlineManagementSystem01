@@ -19,7 +19,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ModelComponent } from './model/model.component';
 import { ModifyScheduledflightComponent } from './modify-scheduledflight/modify-scheduledflight.component';
@@ -33,6 +32,7 @@ import { UpdateFlightComponent } from './update-flight/update-flight.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { WelcomeAdminComponent } from './welcome-admin/welcome-admin.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
