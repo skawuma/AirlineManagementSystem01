@@ -6,10 +6,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  buttonFlag: any;
+  username:any;
+  user:any;
+  admin:any;
+c: any;
+s: any;
+
+
+
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+
+
+    this.user=false;
+    this.admin= false;
+    if(sessionStorage.getItem('role')=='user'){
+      this.user = true;
+    }else if(sessionStorage.getItem('role')=='admin'){
+      this.admin=true;
+    }
+    this.username=sessionStorage.getItem('username');
+    if(this.username!=null)
+    this.username=this.username.toUpperCase();
+
+    }
+    logout(){
+sessionStorage.removeItem('userid');
+sessionStorage.removeItem('user');
+sessionStorage.removeItem('adminid');
+sessionStorage.removeItem('admin');
+    }
+  
 
 }
