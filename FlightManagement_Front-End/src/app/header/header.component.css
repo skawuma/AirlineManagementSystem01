@@ -1,6 +1,6 @@
 a {
     cursor: pointer;
-    color: rgb(214, 29, 29);
+    color: rgb(206, 19, 19);
     font-weight: 700;
   }
   
@@ -10,7 +10,7 @@ a {
   
   .navbar-brand{
     font-weight: 700;
-    color: rgb(175, 66, 66);
+    color: rgb(71, 153, 46);
   }
   .logInBtn{
     font-weight: 700;

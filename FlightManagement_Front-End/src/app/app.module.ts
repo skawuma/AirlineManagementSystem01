@@ -33,10 +33,14 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { WelcomeAdminComponent } from './welcome-admin/welcome-admin.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
     AddScheduledflightComponent,
     AirportDetailsComponent,
     AirportListComponent,
@@ -70,6 +74,9 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule,
     AppRoutingModule
   ],
   providers: [],

@@ -10,10 +10,6 @@ export class HeaderComponent implements OnInit {
   username:any;
   user:any;
   admin:any;
-c: any;
-s: any;
-
-
 
 
   constructor() { }

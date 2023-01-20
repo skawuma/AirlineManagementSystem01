@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Users } from './users';
 
 
-//Author: SANCHIT SINGHAL
+
 //Description: Performs Authentication and user management operations
-//Created On: 08/05/2020
+
 
 
 @Injectable({
