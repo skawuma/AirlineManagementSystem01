@@ -33,9 +33,11 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { WelcomeAdminComponent } from './welcome-admin/welcome-admin.component';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgToastModule } from 'ng-angular-popup';
+
 
 @NgModule({
   declarations: [
@@ -71,15 +73,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UpdateUserComponent,
     UserDetailsComponent,
     WelcomeAdminComponent
+
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     NgbModule,
+    NgToastModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+   
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

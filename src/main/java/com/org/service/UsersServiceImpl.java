@@ -3,17 +3,19 @@ package com.org.service;
 import java.math.BigInteger;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.org.entity.Users;
 import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
 import com.org.repo.UserRepo;
-
+@Service
 public class UsersServiceImpl implements UsersService {
 
-
+@Autowired
 	UserRepo userRepo;
 	@Override
 	public ResponseEntity<?> createUser(Users newUser) {
