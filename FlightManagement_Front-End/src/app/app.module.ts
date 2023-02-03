@@ -37,6 +37,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material.module';
 
 
 @NgModule({
@@ -77,12 +79,14 @@ import { NgToastModule } from 'ng-angular-popup';
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     NgbModule,
     NgToastModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
    
