@@ -2,10 +2,12 @@ package com.org.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-
+@Table(name = "Role_tbr")
  public class Role {
+    
 @Id
 private String roleName;
 private String roleDescription;
