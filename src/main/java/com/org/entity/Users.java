@@ -1,9 +1,13 @@
 package com.org.entity;
 
 import java.math.BigInteger;
-
-import jakarta.persistence.Entity;
+import java.util.Set;
+import jakarta.persistence.*;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,25 +21,32 @@ public class Users {
 	private String UserPassword;
 	private BigInteger userPhone;
 	private String userEmail;
-	
-	
-	
-	public Users() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID")
+            }
+    )
+	private  Set<Role> role;
 
-
+public Users(){
+	super();
+}
+	
 	public Users(String userType, BigInteger userId, String userName, String userPassword, BigInteger userPhone,
-			String userEmail) {
-		super();
+			String userEmail, Set<Role> role) {
 		this.userType = userType;
 		this.userId = userId;
 		this.userName = userName;
 		UserPassword = userPassword;
 		this.userPhone = userPhone;
 		this.userEmail = userEmail;
+		this.role = role;
 	}
+
 
 
 	public String getUserType() {
@@ -43,9 +54,11 @@ public class Users {
 	}
 
 
+
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+
 
 
 	public BigInteger getUserId() {
@@ -53,9 +66,11 @@ public class Users {
 	}
 
 
+
 	public void setUserId(BigInteger userId) {
 		this.userId = userId;
 	}
+
 
 
 	public String getUserName() {
@@ -63,9 +78,11 @@ public class Users {
 	}
 
 
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 
 
 	public String getUserPassword() {
@@ -73,9 +90,11 @@ public class Users {
 	}
 
 
+
 	public void setUserPassword(String userPassword) {
 		UserPassword = userPassword;
 	}
+
 
 
 	public BigInteger getUserPhone() {
@@ -83,9 +102,11 @@ public class Users {
 	}
 
 
+
 	public void setUserPhone(BigInteger userPhone) {
 		this.userPhone = userPhone;
 	}
+
 
 
 	public String getUserEmail() {
@@ -93,16 +114,34 @@ public class Users {
 	}
 
 
+
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
 
 
+
+	public Set<Role> getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(Set<Role> role) {
+		this.role = role;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Users [userType=" + userType + ", userId=" + userId + ", userName=" + userName + ", UserPassword="
-				+ UserPassword + ", userPhone=" + userPhone + ", userEmail=" + userEmail + "]";
-	}
+				+ UserPassword + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", role=" + role + "]";
+	} 
+	
+	
+	
+	
 	
 	
 	

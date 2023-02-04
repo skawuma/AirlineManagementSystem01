@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
+import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.entity.Users;
@@ -37,6 +38,11 @@ public class UsersController {
 
 		userService.createUser(newUser);
 	}
+
+	@PostConstruct
+    public void initRoleAndUser() {
+        userService.initRoleAndUser();  
+    }
 
 	@GetMapping("/readAllUsers")
 	public Iterable<Users> readAllUsers() {
@@ -71,6 +77,15 @@ public class UsersController {
 
 		userService.deleteUser(userId);
 	}
-	
+    @GetMapping({"/forAdmin"})
+	public String forAdmin(){
+        return "This URL is only accessible to the admin";
+    }
+
+	@GetMapping({"/forUser"})
+	public String forUser(){
+        return "This URL is only accessible to the user";
+    }
 
 }
+   

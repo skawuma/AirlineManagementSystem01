@@ -23,6 +23,6 @@ public interface UsersService {
 	public ResponseEntity<?>  findUserByPhone(BigInteger userPhone);
 	
 	public ResponseEntity<?>  findUserByUsername(String userName);
-	
+	public void initRoleAndUser();
 
 }

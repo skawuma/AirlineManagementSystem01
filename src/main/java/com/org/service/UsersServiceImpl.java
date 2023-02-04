@@ -7,16 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import java.util.HashSet;
+import java.util.Set;
+import com.org.entity.Role;
 import com.org.entity.Users;
 import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
+import com.org.repo.RoleRepo;
 import com.org.repo.UserRepo;
+
 @Service
 public class UsersServiceImpl implements UsersService {
 
 @Autowired
 	UserRepo userRepo;
+	@Autowired
+	RoleRepo roleRepo;
+	
 	@Override
 	public ResponseEntity<?> createUser(Users newUser) {
 		// TODO Auto-generated method stub
@@ -121,4 +128,44 @@ public class UsersServiceImpl implements UsersService {
 		}
 	}
 
+	public void initRoleAndUser(){
+	Role adminRole = new Role();
+	adminRole.setRoleName("Admin");
+	adminRole.setRoleDescription("Admin role");
+	roleRepo.save(adminRole);
+
+	Role userRole = new Role();
+	userRole.setRoleName("User");
+	userRole.setRoleDescription("Default role for newly created record");
+	roleRepo.save(userRole);
+
+
+
+
+	Users adminUser = new Users();
+    adminUser.setUserId(BigInteger.valueOf(1111));
+	adminUser.setUserName("admin123"); 
+	adminUser.setUserPassword("admin@pass");
+	adminUser.setUserEmail("admin@gmail.com");
+	adminUser.setUserPhone(BigInteger.valueOf(99999));
+	adminUser.setUserType("TopSecret");
+	Set<Role> adminRoles = new HashSet<>();
+	adminRoles.add(adminRole);
+	adminUser.setRole(adminRoles);
+	userRepo.save(adminUser);
+
+
+	Users user = new Users();
+    user.setUserId(BigInteger.valueOf(1010));
+	user.setUserName("ska"); 
+	user.setUserPassword("ska@pass");
+	user.setUserEmail("ska@gmail.com");
+	user.setUserPhone(BigInteger.valueOf(989898));
+	user.setUserType("Standard");
+	Set<Role> userRoles = new HashSet<>();
+	userRoles.add(userRole);
+	user.setRole(userRoles);
+	userRepo.save(user); 
+
+	}
 }
