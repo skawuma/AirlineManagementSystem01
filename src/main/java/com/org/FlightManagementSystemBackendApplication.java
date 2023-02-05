@@ -22,14 +22,14 @@ public class FlightManagementSystemBackendApplication {
 	//Here I have disabled the csrf token that doesn't matter enable/disable according to your requirement.
 
 
-	@Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*");
-            }
-        };
-    }
+	//  @Bean
+    //  public WebMvcConfigurer corsConfigurer() {
+    //      return new WebMvcConfigurer() {
+    //         @Override
+    //      public void addCorsMappings(CorsRegistry registry) {
+    //              registry.addMapping("/**").allowedOrigins("*");
+    //          }
+    //      };
+    //  }
 
 }
