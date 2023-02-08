@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,7 @@ import com.org.exceptions.RecordNotFoundException;
 import com.org.repo.RoleRepo;
 import com.org.repo.UserRepo;
 
+
 @Service
 public class UsersServiceImpl implements UsersService {
 
@@ -24,6 +26,8 @@ public class UsersServiceImpl implements UsersService {
 	@Autowired
 	RoleRepo roleRepo;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Override
 	public ResponseEntity<?> createUser(Users newUser) {
 		// TODO Auto-generated method stub
@@ -145,7 +149,7 @@ public class UsersServiceImpl implements UsersService {
 	Users adminUser = new Users();
     adminUser.setUserId(BigInteger.valueOf(1111));
 	adminUser.setUserName("admin123"); 
-	adminUser.setUserPassword("admin@pass");
+	adminUser.setUserPassword(getEncodedPassword("admin@pass"));
 	adminUser.setUserEmail("admin@gmail.com");
 	adminUser.setUserPhone(BigInteger.valueOf(99999));
 	adminUser.setUserType("TopSecret");
@@ -158,7 +162,7 @@ public class UsersServiceImpl implements UsersService {
 	Users user = new Users();
     user.setUserId(BigInteger.valueOf(1010));
 	user.setUserName("ska"); 
-	user.setUserPassword("ska@pass");
+	user.setUserPassword(getEncodedPassword("ska@pass"));
 	user.setUserEmail("ska@gmail.com");
 	user.setUserPhone(BigInteger.valueOf(989898));
 	user.setUserType("Standard");
@@ -166,6 +170,10 @@ public class UsersServiceImpl implements UsersService {
 	userRoles.add(userRole);
 	user.setRole(userRoles);
 	userRepo.save(user); 
+
+	}
+	public String getEncodedPassword( String password){
+		return passwordEncoder.encode(password);
 
 	}
 }
