@@ -34,6 +34,7 @@ public class UsersServiceImpl implements UsersService {
 		Optional<Users> findUserById = userRepo.findById(newUser.getUserId());
 		try {
 			if (!findUserById.isPresent()) {
+			newUser.setUserPassword(newUser.getUserPassword());
 				userRepo.save(newUser);
 				return new ResponseEntity<>(newUser, HttpStatus.OK);
 			} else
@@ -119,7 +120,7 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public ResponseEntity<?> findUserByUsername(String userName) {
+	public ResponseEntity<?> findByUsername(String userName) {
 		Optional<Users>findByUserName= userRepo.findByUserName(userName);
 		try {
 			if (findByUserName.isPresent()) {
@@ -149,6 +150,7 @@ public class UsersServiceImpl implements UsersService {
 	Users adminUser = new Users();
     adminUser.setUserId(BigInteger.valueOf(1111));
 	adminUser.setUserName("admin123"); 
+	//adminUser.setUserPassword("admin@pass");
 	adminUser.setUserPassword(getEncodedPassword("admin@pass"));
 	adminUser.setUserEmail("admin@gmail.com");
 	adminUser.setUserPhone(BigInteger.valueOf(99999));
@@ -162,7 +164,8 @@ public class UsersServiceImpl implements UsersService {
 	Users user = new Users();
     user.setUserId(BigInteger.valueOf(1010));
 	user.setUserName("ska"); 
-	user.setUserPassword(getEncodedPassword("ska@pass"));
+	//user.setUserPassword("ska@pass");
+	 user.setUserPassword(getEncodedPassword("ska@pass"));
 	user.setUserEmail("ska@gmail.com");
 	user.setUserPhone(BigInteger.valueOf(989898));
 	user.setUserType("Standard");

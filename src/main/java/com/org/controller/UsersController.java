@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.org.entity.Users;
 import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
@@ -25,7 +25,7 @@ import com.org.service.UsersService;
 
    @ComponentScan
    @RestController
-       @CrossOrigin("http://localhost:4200")
+   @CrossOrigin
    @RequestMapping("/user")
 public class UsersController {
 	
@@ -45,12 +45,14 @@ public class UsersController {
     }
 
 	@GetMapping("/readAllUsers")
+   @PreAuthorize("hasRole('Admin')")
 	public Iterable<Users> readAllUsers() {
 
 		return userService.displayAllUsers();
 	}
 
 	@PutMapping("/updateUser")
+	
 	@ExceptionHandler(RecordNotFoundException.class)
 	public void updateUser(@RequestBody Users updateUser) {
 
@@ -67,7 +69,7 @@ public class UsersController {
 	@ExceptionHandler(RecordNotFoundException.class)
 	public ResponseEntity<?> findUserByUsername(@PathVariable("userName") String userName) {
 
-		return userService.findUserByUsername(userName);
+		return userService.findByUsername(userName);
     }
 
 

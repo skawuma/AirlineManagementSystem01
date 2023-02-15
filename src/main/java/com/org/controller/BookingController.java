@@ -21,7 +21,7 @@ import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
 import com.org.service.BookingService;
 
-@CrossOrigin
+ @CrossOrigin
 @ComponentScan(basePackages ="com")
 @RestController
 @RequestMapping("/api/booking")

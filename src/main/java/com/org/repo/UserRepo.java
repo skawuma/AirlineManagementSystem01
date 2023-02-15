@@ -21,7 +21,7 @@ public interface  UserRepo extends JpaRepository<Users, BigInteger> {
 	public Optional <Users> findByPhone(BigInteger userPhone);
 	
 	
-	@Query(value = "SELECT * FROM AirlinesSystem.Users_tbr where userName = ?1", nativeQuery=true)
+	@Query(value = "SELECT * FROM AirlinesSystem.users_tbr where user_name = ?1", nativeQuery=true)
 	public Optional <Users> findByUserName(String userName);
 
 	

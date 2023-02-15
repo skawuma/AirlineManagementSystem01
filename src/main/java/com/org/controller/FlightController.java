@@ -19,7 +19,7 @@ import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
 import com.org.service.FlightService;
 
-@CrossOrigin
+ @CrossOrigin
 @RestController
 @RequestMapping
 public class FlightController {
