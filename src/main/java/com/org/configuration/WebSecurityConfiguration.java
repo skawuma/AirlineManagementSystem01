@@ -102,22 +102,22 @@ public UserDetailsService JwtService()
 
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-  http
+ return  http
       .csrf()
       .disable()
       .authorizeHttpRequests()
-      .requestMatchers("/jwt/authenticate","user/createUser")
-      .permitAll()
-      .anyRequest()
+      .requestMatchers("/jwt/authenticate","user/createUser/" )
+      .permitAll() 
+      .and()
+      .authorizeHttpRequests().requestMatchers("/user/**")
       .authenticated()
       .and()
       .sessionManagement()
       .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       .and()
       .authenticationProvider(authenticationProvider())
-      .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-  return http.build();
+      .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+.build();
 }
 
      // httpSecurity.addFilterBefore(jwtRequestFilter ,UsernamePasswordAuthenticationFilter.class);

@@ -66,6 +66,7 @@ public class UsersController {
 		return userService.findUserById(userId);
 	}
     @GetMapping("/getUser/{userName}")
+	@PreAuthorize("hasRole('User')")
 	@ExceptionHandler(RecordNotFoundException.class)
 	public ResponseEntity<?> findUserByUsername(@PathVariable("userName") String userName) {
 
