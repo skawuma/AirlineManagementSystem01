@@ -3,32 +3,27 @@
     <div class="row">
         <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
             <h3 style="margin-top: 20px;">Login</h3>
-         <form [formGroup]="profileForm" (ngSubmit)="login()">
-            <small>With an FRS account you can make bookings and manage them quickly and easily.
-            </small>
-            <div class="row">
-                User Name : <input class="form-control" type="text" name="username" placeholder="Enter username" required formControlName="username"/>
-            </div>
-            <div class="row">
-                Password : <input class="form-control" type="password" name="password" placeholder="Enter password"required formControlName="password">
-            </div>
-
-            <div class="mb-3 d-grid">
-                <button type="submit" class="btn btn-primary" href="/forgotpassword">
-                    Forgot password?
-                </button>
-              </div>      
-<div>
-    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/forgotpassword">Forgot password?</a></p>
-</div>
-            
-            <div class="row">
-                <button (click)=login() class="logInBtn btn btn-success">
-                    Login
-                  </button>
-                  <h3>{{ack}}</h3>
-            </div>
-        </form>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                <input type="text"
+                ngModel
+                name="userName"
+                id="userName"
+                placeholder="Enter your username"
+                class="form-control mb-3"
+                >
+    
+                <input type="password"
+                ngModel
+                name="userPassword"
+                id="userPassword"
+                placeholder="Enter your password"
+                class="form-control mb-3"
+                >
+    
+                <input type="submit"
+                value="Login"
+                class="btn btn-outline-primary form-control rounded-0">
+            </form>
 
             <hr>
             <div class="row">

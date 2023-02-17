@@ -25,7 +25,7 @@ import com.org.service.UsersService;
 
    @ComponentScan
    @RestController
-   @CrossOrigin
+   @CrossOrigin(origins = "http://localhost:4200")
    @RequestMapping("/user")
 public class UsersController {
 	
@@ -66,7 +66,7 @@ public class UsersController {
 		return userService.findUserById(userId);
 	}
     @GetMapping("/getUser/{userName}")
-	@PreAuthorize("hasRole('User')")
+	//@PreAuthorize("hasRole('User')")
 	@ExceptionHandler(RecordNotFoundException.class)
 	public ResponseEntity<?> findUserByUsername(@PathVariable("userName") String userName) {
 

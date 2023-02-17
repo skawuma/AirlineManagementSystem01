@@ -106,7 +106,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
       .csrf()
       .disable()
       .authorizeHttpRequests()
-      .requestMatchers("/jwt/authenticate","user/createUser/" )
+      .requestMatchers("/authenticate","user/createUser/" )
       .permitAll() 
       .and()
       .authorizeHttpRequests().requestMatchers("/user/**")

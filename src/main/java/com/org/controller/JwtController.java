@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Objects;
 import org.springframework.http.ResponseEntity;
-import com.org.entity.JwtRequest;
-//import com.org.entity.JwtResponse;
+import com.org.entity.JwtRequest;import com.org.entity.JwtResponse;
 import com.org.util.JwtUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,17 +27,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 @RestController
  @CrossOrigin
-@RequestMapping("/jwt")
+//@RequestMapping("/jwt")
 public class JwtController { 
     
     @Autowired
     private JwtUtil jwtUtil;
       
-    @Autowired
-    private  JwtService jwtService;
+    // @Autowired
+    // private  JwtService jwtService;
 
 
-    private Users users;
+    // private Users users;
    
 
     @Autowired
@@ -53,6 +52,8 @@ public class JwtController {
             throw new UsernameNotFoundException("invalid user request !");
         }
 
+
+   
 
     }
       

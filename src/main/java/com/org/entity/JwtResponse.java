@@ -1,18 +1,18 @@
-// package com.org.entity;
+package com.org.entity;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// @Data
-// @Builder
-// @AllArgsConstructor
-// @NoArgsConstructor
-// public class JwtResponse {
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class JwtResponse {
     
-//     private Users user;
-//     private String jwtToken;
+    private Users user;
+    private String jwtToken;
 
     
     // public JwtResponse(Users user, String jwtToken) {
@@ -32,5 +32,5 @@
     //     this.jwtToken = jwtToken;
     // }
     
-//}
+}
  

@@ -66,23 +66,23 @@ roleAs: any;
 
 
   //Retrieves user token and checks authentication
-  authenticate1(username: string, password: string) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  // authenticate1(username: string, password: string) {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     
-    let url = this.baseUrl + '/login';
-    const data = {
-      username,
-      password
-    };
+  //   let url = this.baseUrl + '/login';
+  //   const data = {
+  //     username,
+  //     password
+  //   };
 
-    return this.httpClient.post<any>(url, data, { headers }).pipe(
-      map(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      })
-    );
-  }
+  //   return this.httpClient.post<any>(url, data, { headers }).pipe(
+  //     map(user => {
+  //       localStorage.setItem('currentUser', JSON.stringify(user));
+  //       this.currentUserSubject.next(user);
+  //       return user;
+  //     })
+  //   );
+  // }
 
   isLoggedIn() {
     const loggedIn = localStorage.getItem('STATE');

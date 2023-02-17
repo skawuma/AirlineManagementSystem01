@@ -39,6 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { MaterialModule } from 'src/material.module';
     UpdateFlightComponent,
     UpdateUserComponent,
     UserDetailsComponent,
-    WelcomeAdminComponent
+    WelcomeAdminComponent,
+    ForbiddenComponent
 
   ],
   imports: [
