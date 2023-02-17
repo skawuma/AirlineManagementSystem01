@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-// import com.org.entity.JwtRequest;
-// import com.org.entity.JwtResponse;
+import com.org.entity.JwtRequest;
+import com.org.entity.JwtResponse;
 import com.org.repo.UserRepo;
 import com.org.entity.Users;
 import com.org.util.JwtUtil;
@@ -29,26 +29,41 @@ import java.util.Set;
 @Service
 public class JwtService implements UserDetailsService {
 
-    // @Autowired
-    // private JwtUtil jwtUtil;
+  
 
     @Autowired
     private UserRepo userRepo;
 
     // @Autowired
-    // private AuthenticationManager authenticationManager;
+    // private JwtUtil jwtUtil;
 
-    // public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
-    //     String userName = jwtRequest.getUserName();
-    //     String userPassword = jwtRequest.getUserPassword();
-    //     authenticate(userName, userPassword);
+//    @Autowired
+//     private AuthenticationManager authenticationManager;
 
-    //     UserDetails userDetails = loadUserByUsername(userName);
-    //     String newGeneratedToken = jwtUtil.generateToken(userDetails);
+   
+//     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
+//         String userName = jwtRequest.getUserName();
+//         String userPassword = jwtRequest.getUserPassword();
+//         authenticate(userName, userPassword);
 
-    //     Users user = userRepo.findByUserName(userName).get();
-    //     return new JwtResponse(user, newGeneratedToken);
-    // }
+//         UserDetails userDetails = loadUserByUsername(userName);
+//         String newGeneratedToken = jwtUtil.generateToken1(userDetails);
+
+//         Users user = userRepo.findByUserName(userName).get();
+//         return new JwtResponse(user, newGeneratedToken);
+//     }
+
+//     private void authenticate(String userName, String userPassword) throws Exception {
+//         try {
+//             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
+//         } catch (DisabledException e) {
+//             throw new Exception("USER_DISABLED", e);
+//         } catch (BadCredentialsException e) {
+//             throw new Exception("INVALID_CREDENTIALS", e);
+//         }
+//     }
+
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -56,8 +71,8 @@ public class JwtService implements UserDetailsService {
 
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(
-                    user.getUserName(),
-                    user.getUserPassword(),
+                    user.getUsername(),
+                    user.getPassword(),
                     getAuthority(user)
             );
         } else {

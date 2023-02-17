@@ -59,6 +59,19 @@ public class JwtUtil  {
         return createToken(claims,userName);
     }
 
+    public String generateToken1(UserDetails userDetails) {
+
+        Map<String, Object> claims = new HashMap<>();
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() +1000*60*30))
+                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+    }
+
+
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder()
                 .setClaims(claims)

@@ -85,9 +85,9 @@ public Users(){
 
 
 
-	public String getUserName() {
-		return userName;
-	}
+	// public String getUserName() {
+	// 	return userName;
+	// }
 
 
 
@@ -97,9 +97,9 @@ public Users(){
 
 
 
-	public String getUserPassword() {
-		return UserPassword;
-	}
+	// public String getUserPassword() {
+	// 	return UserPassword;
+	// }
 
 
 
