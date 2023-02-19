@@ -6,6 +6,6 @@ export class Users {
     userPassword:any;
     userPhone:any;
     userEmail:any;
-    roles:any;
+    role:any;
     active:any;
 }

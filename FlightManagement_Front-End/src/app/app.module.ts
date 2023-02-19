@@ -40,6 +40,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     UpdateUserComponent,
     UserDetailsComponent,
     WelcomeAdminComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+   
 
   ],
   imports: [
@@ -88,7 +90,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     NgbModule,
     NgToastModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [
    

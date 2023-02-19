@@ -34,7 +34,7 @@ public class UsersServiceImpl implements UsersService {
 		Optional<Users> findUserById = userRepo.findById(newUser.getUserId());
 		try {
 			if (!findUserById.isPresent()) {
-			newUser.setUserPassword(newUser.getUserPassword());
+			newUser.setUserPassword(newUser.getPassword());
 				userRepo.save(newUser);
 				return new ResponseEntity<>(newUser, HttpStatus.OK);
 			} else

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 import { Users } from './users';
 
 @Injectable({
@@ -12,7 +13,8 @@ export class UsersService {
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
 
-  constructor(private http: HttpClient
+  constructor(private http: HttpClient,
+    private authAuthservice: AuthenticationService
   
     )
   { }
@@ -57,21 +59,23 @@ export class UsersService {
     });
   }
 
-  // public roleMatch(allowedRoles): boolean {
-  //   let isMatch = false;
-  //   const userRoles: any = this.userAuthService.getRoles();
+  public roleMatch(allowedRoles:any): boolean {
+    let isMatch = false;
+    const userRoles: any = this.authAuthservice.getRoles();
 
-  //   if (userRoles != null && userRoles) {
-  //     for (let i = 0; i < userRoles.length; i++) {
-  //       for (let j = 0; j < allowedRoles.length; j++) {
-  //         if (userRoles[i].roleName === allowedRoles[j]) {
-  //           isMatch = true;
-  //           return isMatch;
-  //         } else {
-  //           return isMatch;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+    if (userRoles != null && userRoles) {
+      for (let i = 0; i < userRoles.length; i++) {
+        for (let j = 0; j < allowedRoles.length; j++) {
+          if (userRoles[i].roleName === allowedRoles[j]) {
+            isMatch = true;
+            return isMatch;
+          } else {
+            return isMatch;
+          }
+        }
+      }
+    }
+    isMatch = true;
+    return isMatch;
+  }
 }

@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate  ,CanActivateChild, CanDeactivate<
 
   // Routes to error page if user is not logged in
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if(this.authSerivce.isUserLoggedIn()) {
+    if(this.authSerivce.isLoggedIn()) {
        // logged in so return true
       return true;
     }

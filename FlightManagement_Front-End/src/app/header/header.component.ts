@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-header',
@@ -7,35 +9,39 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  buttonFlag: any;
-  username:any;
-  user:any;
-  admin:any;
+// buttonFlag: any;
+username: any;
+  user: any;
+  admin: any;
+  constructor(
+    private authAuthService: AuthenticationService,
+    private router: Router,
+    public userService: UsersService
+  ) {}
 
+  
 
-  constructor(private loginServive:AuthenticationService) { }
+  public isLoggedIn() {
+    return this.authAuthService.isLoggedIn();
+  }
 
-  ngOnInit() {
-
-
+  public logout() {
+    this.authAuthService.clear();
+    this.router.navigate(['/home']);
+  }
+  ngOnInit(){
     this.user=false;
-    this.admin= false;
-    if(sessionStorage.getItem('role')=='user'){
-      this.user = true;
-    }else if(sessionStorage.getItem('role')=='admin'){
-      this.admin=true;
+    this.admin=false;
+    if(sessionStorage.getItem('role')==='User'){
+        this.user=true;
+    }else if(sessionStorage.getItem('role')==='Admin'){
+        this.admin=true;
     }
+    // this.buttonFlag=this.authenticationService.isUserLoggedIn();
     this.username=sessionStorage.getItem('username');
     if(this.username!=null)
-    this.username=this.username.toUpperCase();
+        this.username=this.username.toUpperCase();
+}
 
-    }
-    logout(){
-sessionStorage.removeItem('userid');
-sessionStorage.removeItem('user');
-sessionStorage.removeItem('adminid');
-sessionStorage.removeItem('admin');
-    }
-  
 
 }

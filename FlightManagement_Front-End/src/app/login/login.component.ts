@@ -16,12 +16,17 @@ export class LoginComponent implements OnInit {
   // ack:any;
   // username = "";
   // password = '';
-   user: Users={"userId": 0, "userName":"", "userPassword":"", "userPhone": 0, "userEmail":"", "active": null, "roles":""};
+  //user: Users={"userId": 0, "userName":"", "userPassword":"", "userPhone": 0, "userEmail":"", "active": null, "role":""};
+  //invalidLogin!: false;
+ 
+ 
+  
   // invalidLogin = false;
   //  users:any;
   constructor(
-    //private loginservice: AuthenticationService,
-    private usersService: UsersService
+    private authservice: AuthenticationService,
+    private usersService: UsersService,
+    private router:Router
     ) { }
 
 
@@ -40,8 +45,26 @@ export class LoginComponent implements OnInit {
   }
   login(loginForm: NgForm) {
     this.usersService.login(loginForm.value).subscribe(
-      (response)=> {
+      (response:any)=> {
         console.log(response)
+       this.authservice.setRoles(response.user.role);
+       this.authservice.setToken(response.jwtToken);
+       
+       const role = response.user.role[0].roleName;
+       if(role === 'User') {
+        //  sessionStorage.setItem('role', 'user');
+        //  sessionStorage.setItem('userId', String(response.user.userId));
+        //  this.invalidLogin = false;
+         this.router.navigate(["/home"]);
+        
+       }
+       else if(role === 'Admin') {// In Role Entity Use this naming convention for role_id
+        //  sessionStorage.setItem('role', 'admin');
+        //  sessionStorage.setItem('userId', String(response.user.userId));
+        //  this.invalidLogin = false;
+         this.router.navigate(["/welcome-admin"]);
+       }
+
       }, 
       (error)=> {
         console.log(error);
@@ -49,6 +72,27 @@ export class LoginComponent implements OnInit {
       
     );
   }
+
+  // redirect() {
+
+  // const role = this.user.role[0].roleName;
+  //   if(role === 'User') {
+  //     sessionStorage.setItem('role', 'user');
+  //     sessionStorage.setItem('userId', String(this.user.userId));
+  //     this.invalidLogin = false;
+  //     this.router.navigate(["userpanel"]).then(()=> {
+  //       window.location.reload();
+  //     });
+  //   }
+  //   else if(role === 'Admin') {// In Role Entity Use this naming convention for role_id
+  //     sessionStorage.setItem('role', 'admin');
+  //     sessionStorage.setItem('userId', String(this.user.userId));
+  //     this.invalidLogin = false;
+  //     this.router.navigate(["adminpanel"]).then(()=> {
+  //       window.location.reload();
+  //     });
+  //   }
+  // }
 
 
   // checkUserLogin(route: ActivatedRouteSnapshot, url: any): boolean {
