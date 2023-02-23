@@ -9,8 +9,8 @@ import { Users } from '../users';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: Users={"userId": null, "userName":"", "userPassword":"", "userPhone": null, "userEmail":"", "active": null, "role":""};
-
+  //user: Users={"userId": null, "userName":"", "userPassword":"", "userPhone": null, "userEmail":"", "active": null, "role":""};
+user: Users= new Users();
   public barLabel: string = "Password strength:";
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
 
@@ -18,15 +18,21 @@ export class SignupComponent implements OnInit {
 
 
   ngOnInit() {
-    if(sessionStorage.getItem('role') === 'customer' || sessionStorage.getItem('role') === 'admin') {
+    if(sessionStorage.getItem('role') === 'User' || sessionStorage.getItem('role') === 'Admin') {
       this.router.navigate(['noauth']);
     }
   }
 
+
+
   // Adds a new User
+ 
   signUp() {
-    console.log(this.user);
+    // console.log(this.user);
     this.loginservice.signUp(this.user).subscribe();
+    console.log(this.user);
+    this.user = new Users();
+    console.log(this.user);
     this.router.navigate(["/login"]);
   }
 
