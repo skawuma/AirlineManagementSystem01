@@ -6,10 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.org.service.JwtService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.math.BigInteger;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.http.ResponseEntity;
 import com.org.entity.JwtRequest;
+import com.org.entity.RegisterRequest;
 import com.org.entity.JwtResponse;
+import com.org.entity.Role;
+
 import com.org.util.JwtUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +27,7 @@ import org.springframework.security.authentication.DisabledException;
 import com.org.entity.Users;
 import com.org.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.security.core.Authentication;
@@ -42,7 +49,8 @@ public class JwtController {
     private  UserRepo userRepo;
 
     // private Users users;
-   
+    @Autowired
+	private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -56,7 +64,51 @@ public class JwtController {
     //         throw new UsernameNotFoundException("invalid user request !");
     //     }
     // }
-    @PostMapping({"/authenticate"})
+
+    public String getEncodedPassword( String password){
+		return passwordEncoder.encode(password);
+
+	}
+    @PostMapping({"/signup"})
+        public JwtResponse register(@RequestBody RegisterRequest request) throws Exception {
+           
+             
+        //     Users user = new Users();
+
+        //     user.setUserName(user.getUsername());
+        //     user.setUserPassword(passwordEncoder.encode(user.getPassword())); 
+        //     user.setUserPhone(user.getUserPhone());
+        //     user.setUserEmail(user.getUserEmail());
+        //     user.setRole(user.getRole());
+        //     user.setUserType(user.getUserType());
+
+
+        //   userRepo.save(user);
+        //     authenticate(user.getUsername(), user.getPassword());
+
+            // String userName = jwtRequest.getUserName();
+            // String userPassword = jwtRequest.getUserPassword();
+            // BigInteger userPhone = jwtRequest.getUserPhone();
+            // String userEmail = jwtRequest.getUserEmail();
+            Set<Role> role = new HashSet<>();
+            var user =Users.builder()
+            .userName(request.getUserName())
+            .UserPassword (passwordEncoder.encode(request.getUserPassword()))
+            .userPhone(request.getUserPhone())
+            .userEmail(request.getUserEmail())
+            .role(role)
+            .build();
+            userRepo.save(user);
+
+            
+         //UserDetails userDetails = jwtService.loadUserByUsername(user.getUserName());
+            String newGeneratedToken = jwtUtil.generateToken1(user);
+    
+        return new JwtResponse(user, newGeneratedToken);
+        }
+ 
+
+        @PostMapping({"/authenticate"})
         public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws Exception {
             String userName = jwtRequest.getUserName();
             String userPassword = jwtRequest.getUserPassword();

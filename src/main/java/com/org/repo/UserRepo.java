@@ -14,10 +14,10 @@ import com.org.entity.Users;
 @Repository
 public interface  UserRepo extends JpaRepository<Users, BigInteger> {
 	
-	@Query(value = "SELECT * FROM Users u WHERE u.userEmail=1", nativeQuery=true)
+	@Query(value = "SELECT * FROM AirlinesSystem.users_tbr where user_email = ?1", nativeQuery=true)
 	public Optional <Users> findByEmail(String userEmail);
 	
-	@Query(value = "SELECT * FROM Users u WHERE u.userPhone=1", nativeQuery=true)
+	@Query(value = "SELECT * FROM AirlinesSystem.users_tbr where user_id = ?1", nativeQuery=true)
 	public Optional <Users> findByPhone(BigInteger userPhone);
 	
 	

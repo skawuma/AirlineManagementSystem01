@@ -39,6 +39,11 @@ public class UsersController {
 		userService.createUser(newUser);
 	}
 
+	@PostMapping({"/registerNewUser"})
+    public Users registerNewUser(@RequestBody Users user) {
+        return userService.registerNewUser(user);
+    }
+
 	@PostConstruct
     public void initRoleAndUser() {
         userService.initRoleAndUser();  

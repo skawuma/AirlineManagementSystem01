@@ -106,7 +106,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
       .csrf()
       .disable()
       .authorizeHttpRequests()
-      .requestMatchers("/authenticate","user/createUser/","/api/aiport/allAirport" )
+      .requestMatchers("/authenticate","/signup","/api/aiport/allAirport","/user/createUser","/user/registerNewUser")
       .permitAll() 
       .and()
       .authorizeHttpRequests().requestMatchers("/user/**")
@@ -117,6 +117,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
       .and()
       .authenticationProvider(authenticationProvider())
       .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+      
 .build();
 }
 

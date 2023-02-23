@@ -8,8 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.CollectionUtils;
-
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,13 +18,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-
+import lombok.Builder;
+@Builder
 @Entity
 @Table(name= "Users_tbr")
 public class Users implements UserDetails{
 	
 	private String userType;
 	@Id
+	@GeneratedValue
 	private  BigInteger userId;
 	@Column(name="userName")
 	private String userName;
@@ -85,9 +85,9 @@ public Users(){
 
 
 
-	// public String getUserName() {
-	// 	return userName;
-	// }
+	public String getUserName() {
+		return userName;
+	}
 
 
 
@@ -97,9 +97,9 @@ public Users(){
 
 
 
-	// public String getUserPassword() {
-	// 	return UserPassword;
-	// }
+	public String getUserPassword() {
+		return UserPassword;
+	}
 
 
 

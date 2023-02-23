@@ -13,6 +13,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  ack: any;
   // ack:any;
   // username = "";
   // password = '';
@@ -52,16 +53,19 @@ export class LoginComponent implements OnInit {
        
        const role = response.user.role[0].roleName;
        if(role === 'User') {
-        //  sessionStorage.setItem('role', 'user');
-        //  sessionStorage.setItem('userId', String(response.user.userId));
-        //  this.invalidLogin = false;
+
+        sessionStorage.setItem('role', 'User');
+         sessionStorage.setItem('userId', String(response.user.userId));
+        this.ack = "Login Successful"
+         //  this.invalidLogin = false;
          this.router.navigate(["/home"]);
         
        }
        else if(role === 'Admin') {// In Role Entity Use this naming convention for role_id
-        //  sessionStorage.setItem('role', 'admin');
-        //  sessionStorage.setItem('userId', String(response.user.userId));
-        //  this.invalidLogin = false;
+         sessionStorage.setItem('role', 'Admin');
+          sessionStorage.setItem('userId', String(response.user.userId));
+          this.ack = "Login Successful"
+          //  this.invalidLogin = false;
          this.router.navigate(["/welcome-admin"]);
        }
 

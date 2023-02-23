@@ -24,5 +24,6 @@ public interface UsersService {
 	
 	public ResponseEntity<?>  findByUsername(String userName);
 	public void initRoleAndUser();
+	public Users registerNewUser(Users newuser);
 
 }

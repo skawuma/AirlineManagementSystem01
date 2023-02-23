@@ -16,7 +16,8 @@ import { BehaviorSubject, map, Observable, of } from 'rxjs';
 })
 export class AuthenticationService {
 
-  constructor() {}
+   private baseUrl:  string ='http://localhost:8080/user';
+  constructor(private httpClient: HttpClient) {}
 
   public setRoles(roles: []) {
     localStorage.setItem('roles', JSON.stringify(roles));
@@ -45,7 +46,10 @@ export class AuthenticationService {
     // return !(user === null)
   }
 
-
+  // Adds a new User
+  signUp(user: Users) {
+    return this.httpClient.post(this.baseUrl+"/registerNewUser",user);
+  }
 
 
 

@@ -41,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { RouterModule } from '@angular/router';
+import { PasswordStrengthComponent } from './password-strength/password-strength.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { RouterModule } from '@angular/router';
     UserDetailsComponent,
     WelcomeAdminComponent,
     ForbiddenComponent,
+    PasswordStrengthComponent,
    
 
   ],

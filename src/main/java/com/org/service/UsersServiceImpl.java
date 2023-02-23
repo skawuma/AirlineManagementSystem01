@@ -179,4 +179,18 @@ public class UsersServiceImpl implements UsersService {
 		return passwordEncoder.encode(password);
 
 	}
+
+	public Users registerNewUser(Users newuser)  {
+        Role role = roleRepo.findById("User").get();
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(role);
+        newuser.setRole(userRoles);
+        newuser.setUserPassword(getEncodedPassword(newuser.getUserPassword()));
+        return userRepo.save(newuser);
+
+    }
+
+
+
+
 }
