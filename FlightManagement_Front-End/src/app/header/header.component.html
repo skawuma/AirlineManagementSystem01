@@ -13,7 +13,7 @@
           </li>
           <li class="nav-item">
             
-            <a class="nav-link active" aria-current="page" routerLink="/admin"
+            <a class="nav-link active" aria-current="page" routerLink="/welcomeAdmin"
             *ngIf="userService.roleMatch(['Admin'])"
          
             
@@ -23,7 +23,7 @@
           </li>
           <li class="nav-item">
             
-            <a class="nav-link active" aria-current="page" routerLink="/user"
+            <a class="nav-link active" aria-current="page" routerLink="/welcomeUser"
             *ngIf="userService.roleMatch(['User'])"
             >User Dashboard</a>
          

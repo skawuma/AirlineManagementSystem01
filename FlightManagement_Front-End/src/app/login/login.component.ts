@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('userId', String(response.user.userId));
           this.ack = "Login Successful"
           //  this.invalidLogin = false;
-         this.router.navigate(["/welcome-admin"]);
+         this.router.navigate(["/home"]);
        }
 
       }, 

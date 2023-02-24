@@ -42,6 +42,8 @@ import { MaterialModule } from 'src/material.module';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { RouterModule } from '@angular/router';
 import { PasswordStrengthComponent } from './password-strength/password-strength.component';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
 
 
 @NgModule({
@@ -80,6 +82,7 @@ import { PasswordStrengthComponent } from './password-strength/password-strength
     WelcomeAdminComponent,
     ForbiddenComponent,
     PasswordStrengthComponent,
+    WelcomeUserComponent,
    
 
   ],
@@ -93,7 +96,8 @@ import { PasswordStrengthComponent } from './password-strength/password-strength
     NgToastModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    PasswordStrengthMeterModule
   ],
   providers: [
    
