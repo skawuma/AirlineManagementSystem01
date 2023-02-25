@@ -27,6 +27,8 @@ import { UpdateFlightComponent } from './update-flight/update-flight.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
+import { AuthGuard } from './auth.guard';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 const routes: Routes = [
 
@@ -51,13 +53,14 @@ const routes: Routes = [
   {path: 'scheduledFlight/add', component:AddScheduledflightComponent},
   {path: 'scheduledFlight/show', component:ShowScheduledflightsComponent},
   {path: 'scheduledFlight/search', component:SearchScheduledflightComponent},
-  {path: 'welcomeAdmin', component:WelcomeAdminComponent},
+  {path: 'welcomeAdmin', component:WelcomeAdminComponent,canActivate:[AuthGuard], data:{roles:['Admin']}},
   {path: 'scheduledFlight/modify', component: ModifyScheduledflightComponent},
   {path: 'addUser', component: CreateUserComponent},
   {path: 'updateUser/:id', component: UpdateUserComponent},
   {path: 'userDetails/:id', component: UserDetailsComponent},
   {path: 'users', component: ListUserComponent},
-  {path: 'welcomeUser',component:WelcomeUserComponent}
+  { path: 'forbidden', component: ForbiddenComponent },
+  {path: 'welcomeUser',component:WelcomeUserComponent, canActivate:[AuthGuard], data:{roles:['User']}}
 ];
 
 @NgModule({

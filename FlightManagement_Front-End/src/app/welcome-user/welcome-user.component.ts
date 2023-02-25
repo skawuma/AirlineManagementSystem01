@@ -12,6 +12,10 @@ export class WelcomeUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  bookFlight(): void{
+    this.router.navigate(['addBooking']);
+  }
+
 
   addScheduledFlight(): void{
     this.router.navigate(['scheduledFlight/add']);

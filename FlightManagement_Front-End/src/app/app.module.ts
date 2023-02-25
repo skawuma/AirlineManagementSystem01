@@ -44,6 +44,9 @@ import { RouterModule } from '@angular/router';
 import { PasswordStrengthComponent } from './password-strength/password-strength.component';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
+import { AuthGuard } from './auth.guard';
+import { AuthInterceptor } from './auth.interceptor';
+import { UsersService } from './users.service';
 
 
 @NgModule({
@@ -100,8 +103,13 @@ import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
     PasswordStrengthMeterModule
   ],
   providers: [
-   
-
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    },
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
