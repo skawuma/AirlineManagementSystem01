@@ -15,5 +15,6 @@ public interface AirportService {
 	public Airport modifyAirport(Airport airport);
 	
 	public String removeAirport(String airportCode);
+	public void airportCreator();
 
 }

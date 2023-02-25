@@ -77,5 +77,33 @@ public class AirportServiceImpl implements AirportService {
 			throw new RecordNotFoundException("Airport with code: " + airportCode + " not exists");
 
 	}
+	public void airportCreator(){
+
+	Airport airport  = new Airport();
+
+	airport.setAirportCode("AAA01");
+    airport.setAirportLocation("Atlanta");
+	airport.setAirportName("Hartsfield-jackson");
+	airportRepo.save(airport);
+
+
+	Airport airport1 = new Airport();
+
+	airport1.setAirportCode("BBB01");
+    airport1.setAirportLocation("Boston");
+	airport1.setAirportName("Logan-International");
+	airportRepo.save(airport1);
+
+
+	Airport airport2 = new Airport();
+
+	airport2.setAirportCode("CCC01");
+    airport2.setAirportLocation("Chicago");
+	airport2.setAirportName("Chicago-Midaway");
+	airportRepo.save(airport2);
+
+	}
+
+
 
 }

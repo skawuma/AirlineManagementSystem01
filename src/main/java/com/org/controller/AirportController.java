@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import jakarta.annotation.PostConstruct;
 import com.org.entity.Airport;
 import com.org.exceptions.RecordAlreadyPresentException;
 import com.org.exceptions.RecordNotFoundException;
@@ -31,6 +31,12 @@ public class AirportController {
 		return airportService.viewAirport(airportCode);
 	}
 	
+
+	@PostConstruct
+    public void airportCreator() {
+        airportService.airportCreator();  
+    }
+
 	@GetMapping("/allAirport")
 	public Iterable<Airport> viewAllAirport() {
 		return airportService.viewAllAirport();
