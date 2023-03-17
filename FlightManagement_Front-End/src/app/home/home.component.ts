@@ -29,7 +29,7 @@ this.maxDate.setMonth(this.maxDate.getMonth()+2)
   }
 
   ngOnInit(){
-   // this.airportService.viewAllAirport().subscribe((data:Airport[])=>this.airports=data);
+    this.airportService.viewAllAirport().subscribe((data:Airport[])=>this.airports=data);
 }
 findFlights(){
   this.router.navigate(['/booking/availableflights', this.src, this.dest, this.journeyDate]);
