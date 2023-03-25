@@ -29,7 +29,7 @@ export class ScheduledflightService {
     return this.http.post('http://localhost:8080/scheduledFlight/add?',form,{params});
   }
 
-  searchScheduledFlight(scheduledFlightId: number) {
+  searchScheduledFlight(scheduledFlightId: any) {
     return this.http.get('http://localhost:8080/scheduledFlight/search?flightId='+scheduledFlightId);
   }
 
@@ -37,7 +37,7 @@ export class ScheduledflightService {
     return this.http.get('http://localhost:8080/scheduledFlight/viewAll');
   }
 
-  removeScheduleFlight(scheduleFlightId:number){
+  removeScheduleFlight(scheduleFlightId:any){
     return this.http.delete('http://localhost:8080/scheduledFlight/delete?flightId='+scheduleFlightId);
  }
 
