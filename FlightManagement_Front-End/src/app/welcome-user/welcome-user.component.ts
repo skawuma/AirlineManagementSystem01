@@ -45,6 +45,9 @@ export class WelcomeUserComponent implements OnInit {
     this.router.navigate(['addAirport']);
   }
 
+  addUser():void{
+    this.router.navigate(['addUser']);
+  }
   viewAirport(): void{
     this.router.navigate(['airports']);
   }
